@@ -1,2 +1,2 @@
-# snowdump
+# SnowDump
 Attempt to connect to and dump all tables within a ServiceNow instance.
