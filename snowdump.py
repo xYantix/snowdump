@@ -23,10 +23,10 @@ for t in tables:
     fullurl = snurl + t
     r = requests.get(url)
     response = requests.get(fullurl, auth=(user, pwd), headers=headers)
+    data = json.loads(response.text)
     print('Attempting to dump: ' + t)
-    data = response.json()
-
-    with open(t+'.txt','w') as write_file:
-        json.dump(data, write_file)
+    
+    with open(t+'.json','w') as output:
+        json.dump(data, output, indent=4)
     
 importtables.close()
