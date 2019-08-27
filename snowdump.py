@@ -21,12 +21,14 @@ tables = importtables.read().splitlines()
 
 for t in tables:
     fullurl = snurl + t
-    r = requests.get(url)
-    response = requests.get(fullurl, auth=(user, pwd), headers=headers)
-    data = json.loads(response.text)
+    response = requests.get(fullurl, auth=(user, pwd), headers=headers, timeout=300)
+    if response.status_code != 200:
+        print("Unable to access. HTTP status code: ", response.status_code)
     print('Attempting to dump: ' + t)
     
     with open(t+'.json','w') as output:
+        data = json.loads(response.text)
         json.dump(data, output, indent=4)
     
+
 importtables.close()
