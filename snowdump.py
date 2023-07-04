@@ -14,7 +14,7 @@ user = args.user
 pwd = args.password
 
 snurl = url + '/api/now/table/'
-headers = {"Accept":"application/json","X-Forwarded-For: 127.0.0.1"}
+headers = {"Accept":"application/json","X-Forwarded-For:" "127.0.0.1"}
  
 importtables = open('tables.txt','r')
 tables = importtables.read().splitlines() 
